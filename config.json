@@ -1,13 +1,13 @@
 {
-    "port": 8091,
+    "port": 8090,
     "bodyLimit": "100kb",
     "corsHeaders": ["Link"],
     "db":
     {
-        "host": "localhost",
+        "host": "5.9.144.226",
         "name": "hr_recruit_dev",
-        "password": "java@123",
-        "username": "root"
+        "password": "recruitdev@123",
+        "username": "hr_recruit_dev"
     },
     "mongodb":"hr_recruit_dev",
     "CLIENT_ID": "1004109699057-s209vg38fk1csgsrnpirdqenrhh34fra.apps.googleusercontent.com",
