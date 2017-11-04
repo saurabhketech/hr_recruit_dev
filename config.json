@@ -12,5 +12,5 @@
     "mongodb":"hr_recruit_dev",
     "expiry_date": true,
     "send_automatic_tags_email": true,
-    "is_silent": true,
+    "is_silent": true
 }
