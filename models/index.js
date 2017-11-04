@@ -7,7 +7,7 @@ var config = require("../config.json");
 var migration = require('../migrations/index.js')
 var db = {};
 console.log("============")
-console.log(process.env.mongodb)
+console.log(process.argv.mongodb)
 var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, { host: 'localhost' });
 
 fs
