@@ -4,7 +4,7 @@
   "description": "Hr_System project on ES6 RESTful Express API",
   "main": "dist",
   "scripts": {
-    "start": "node ./models/index.js && node ./src/index.js",
+    "start": "node ./models/index.js && node ./src/index.js"
   },
   "repository": "developit/express-es6-rest-api",
   "author": "Jason Miller <jason@developit.ca>",
