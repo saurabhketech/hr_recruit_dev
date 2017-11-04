@@ -1,0 +1,9 @@
+
+/README.md
+/dist
+/node_modules
+/package.json
+/.eslintrc.js
+/nbproject/private/
+/nbproject
+/nano.save
