@@ -2,7 +2,7 @@
   "name": "Hr_System",
   "version": "0.3.0",
   "description": "Hr_System project on ES6 RESTful Express API",
-  "main": "dist",
+  "main": "src",
   "scripts": {
     "start": "node ./models/index.js && nodemon --max_old_space_size=8192 -w src --exec"
   },
