@@ -29,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var db = {};
 
 // create your instance of sequelize
-var sequelize = new _sequelize2.default(_config2.default.db.name, _config2.default.db.username, _config2.default.db.password, { host: _config2.default.db.host });
+var sequelize = new _sequelize2.default(_config2.default.db.name, _config2.default.db.username, _config2.default.db.password, { port: 3306, host: _config2.default.db.host });
 
 // load models
 Object.keys(_models2.default).forEach(function (modelName) {
@@ -121,6 +121,7 @@ sequelize.sync().then(function () {
         }
     });
 }, function (err) {
+    console.log(err);
     console.log("Incorrect Sequelize Db Details Update config details");
     process.exit(0);
 });

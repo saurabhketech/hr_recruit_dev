@@ -6,7 +6,7 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("../config.json");
 var migration = require('../migrations/index.js')
 var db = {};
-var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, { host: 'localhost' });
+var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, {port: 3306, host: config.db.host });
 
 fs
     .readdirSync(__dirname)
@@ -32,6 +32,7 @@ migration.up(sequelize.getQueryInterface(), Sequelize)
                 db.Sequelize = Sequelize;
             })
     }).catch((err) => {
+        console.log(err)
         console.log("Incorrect Sequelize Db Details update config file");
         process.exit(0)
     })

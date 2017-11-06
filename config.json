@@ -4,10 +4,10 @@
     "corsHeaders": ["Link"],
     "db":
     {
-        "host": "localhost",
+        "host": "5.9.144.226",
         "name": "hr_recruit_dev",
-        "password": "java@123",
-        "username": "root"
+        "password": "recruitdev@123",
+        "username": "hr_recruit_dev"
     },
     "mongodb":"hr_recruit_dev",
     "expiry_date": true,
