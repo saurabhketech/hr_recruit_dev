@@ -4,7 +4,8 @@
   "description": "Hr_System project on ES6 RESTful Express API",
   "main": "dist",
   "scripts": {
-    "start": "node dist"
+    "start": "node dist",
+    "build": "babel src -s -D -d dist --presets es2015,stage-0"
   },
   "repository": "developit/express-es6-rest-api",
   "author": "Jason Miller <jason@developit.ca>",
