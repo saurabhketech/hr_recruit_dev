@@ -8,4 +8,5 @@ jobs:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
       - run: npm install
+      - run: npm install -g newman
       - run: newman run postman.json -e env.json
