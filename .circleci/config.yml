@@ -3,6 +3,8 @@ jobs:
   build:
     docker: 
       - image: node:7.10.0
+      - image: mongo:3.5.6
+      - image: mysql:5.7
     working_directory: /home/ubuntu/hr-recruit
 
     steps:
