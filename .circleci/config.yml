@@ -16,6 +16,10 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+machine:
+  node:
+    version: 4.5.0
+    
 jobs:
   build:
     docker:
@@ -29,9 +33,7 @@ jobs:
 
     working_directory: ~/repo
 
-  dependencies:
-    pre:
-      - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+
     steps:
       - checkout
       
