@@ -25,7 +25,9 @@ jobs:
       - image: circleci/node:latest
 
     working_directory: ~/repo
-
+    dependencies:
+      commands:
+        - npm install
     steps:
       - checkout
       
