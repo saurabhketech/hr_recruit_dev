@@ -9,19 +9,17 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_USER=hr_recruit_dev
           - MYSQL_PASSWORD=hr_recruit_dev
-      - image: postgres:9.5
-        environment:
-          - POSTGRES_USER=hr_recruit_dev
-          - POSTGRES_DB=hr_recruit_dev
+
     working_directory: /home/ubuntu/hr-recruit
 
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
-      - run: npm install
-      - run: npm install pm2 -g
-      - run: pm2 start npm --name hr-recruit -- start
-      - run: npm install -g newman
-      - run: pm2 list
-      - run: pm2 logs
+      - run: mysql -u hr_recruit_dev -p hr_recruit_dev && CREATE DATABASE IF NOT EXISTS hr_recruit_dev 
+      # - run: npm install
+      # - run: npm install pm2 -g
+      # - run: pm2 start npm --name hr-recruit -- start
+      # - run: npm install -g newman
+      # - run: pm2 list
+      # - run: pm2 logs
       # - run: newman run postman.json -e env.json
