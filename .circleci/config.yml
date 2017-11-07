@@ -1,62 +1,74 @@
+# # version: 2
+# # jobs:
+# #    build:
+# #      docker:
+# #        - image: circleci/mongo:3.4.4
+# #        - image: circleci/mysql:5.7.18
+# #        - image: circleci/node:latest
+# #      steps:
+# #        - checkout
+# #        - run: echo "hello world"
+
+
+
+# # Javascript Node CircleCI 2.0 configuration file
+# #
+# # Check https://circleci.com/docs/2.0/language-javascript/ for more details
+# #
 # version: 2
+# machine:
+#   node:
+#     version: 4.5.0
+    
 # jobs:
-#    build:
-#      docker:
-#        - image: circleci/mongo:3.4.4
-#        - image: circleci/mysql:5.7.18
-#        - image: circleci/node:latest
-#      steps:
-#        - checkout
-#        - run: echo "hello world"
+#   build:
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/mongo:3.4.4
+#       - image: circleci/mysql:5.7.18
+#       - image: circleci/node:latest
+#       # Specify service dependencies here if necessary
+#       # CircleCI maintains a library of pre-built images
+#       # documented at https://circleci.com/docs/2.0/circleci-images/
+
+#     working_directory: ~/repo
 
 
+#     steps:
+#       - checkout
+      
+#       # Download and cache dependencies
+#       - restore_cache:
+#           keys:
+#           - v1-dependencies-{{ checksum "package.json" }}
+#           # fallback to using the latest cache if no exact match is found
+#           - v1-dependencies-
+#       - run: node dist
+#       - run: sudo npm install -g npm@latest
+#       - run: npm install
+#       - save_cache:
+#           key: dependency-cache-{{ checksum "package.json" }}
+#           paths:
+#             - node_modules
 
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+#       - save_cache:
+#           paths:
+#             - node_modules
+#           key: v1-dependencies-{{ checksum "package.json" }}
+        
+#       # run tests!
+#       - run: npm start
+
+
 machine:
   node:
     version: 4.5.0
-    
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/mongo:3.4.4
-      - image: circleci/mysql:5.7.18
-      - image: circleci/node:latest
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
 
-    working_directory: ~/repo
-
-
-    steps:
-      - checkout
-      
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run: node dist
-      - run: sudo npm install -g npm@latest
-      - run: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: npm start
-
-
+deployment:
+  production:
+    branch: master
+    commands:
+      # The following few lines set up the heroku-toolbet CLI so we
+      # can deploy the app. Read more in the CircleCI docs:
+      # https://circleci.com/docs/1.0/continuous-deployment-with-heroku/
+      - npm start
