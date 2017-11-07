@@ -16,6 +16,22 @@
 
 
 version: 2
+machine:
+  node:
+    version:
+      latest
+
+dependencies:
+  pre:
+    - npm install coffeescript
+
+    
+database:
+  override:
+    # replace CircleCI's generated database.yml
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load
+
 jobs:
   build:
     docker:
