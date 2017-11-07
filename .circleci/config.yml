@@ -29,7 +29,9 @@ jobs:
 
     working_directory: ~/repo
 
-
+  dependencies:
+    pre:
+      - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
     steps:
       - checkout
       
