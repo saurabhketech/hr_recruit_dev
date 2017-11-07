@@ -1,30 +1,43 @@
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/mongo:3.4.4
+#       - image: circleci/mysql:5.7.18
+#       - image: circleci/node:7.10.0
+
+#     working_directory: /home/ubuntu/hr-recruit
+
+#     steps:
+#       - checkout
+#       - run: mkdir -p /home/ubuntu/hr-recruit
+#       - run: npm install
+#       - run: npm start
+#       # Download and cache dependencies
+#       - restore_cache:
+#           keys:
+#           - v1-dependencies-{{ checksum "package.json" }}
+#           # fallback to using the latest cache if no exact match is found
+#           - v1-dependencies-
+
+#       - save_cache:
+#           paths:
+#             - node_modules
+#           key: v1-dependencies-{{ checksum "package.json" }}
+        
+#       # run tests!
+#       - run: newman run postman.json -e env.json
+
+
+
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/mongo:3.4.4
-      - image: circleci/mysql:5.7.18
-      - image: circleci/node:7.10.0
-
+    docker: 
+      - image: node:7.10.0
     working_directory: /home/ubuntu/hr-recruit
-
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
-      - run: sudo apt-get install nodejs
-      - run: npm start
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: newman run postman.json -e env.json
+      - run: npm install
