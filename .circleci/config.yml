@@ -13,5 +13,5 @@ jobs:
       - run: pm2 start npm --name hr-recruit -- start
       - run: npm install -g newman
       - run: pm2 list
-      - run pm2 logs 0
+      - run: pm2 logs 0
       - run: newman run postman.json -e env.json
