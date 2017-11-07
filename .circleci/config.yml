@@ -15,11 +15,10 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
-      - run: mysql -u hr_recruit_dev -p hr_recruit_dev && CREATE DATABASE IF NOT EXISTS hr_recruit_dev 
-      # - run: npm install
-      # - run: npm install pm2 -g
-      # - run: pm2 start npm --name hr-recruit -- start
-      # - run: npm install -g newman
-      # - run: pm2 list
-      # - run: pm2 logs
-      # - run: newman run postman.json -e env.json
+      - run: npm install
+      - run: npm install pm2 -g
+      - run: pm2 start npm --name hr-recruit -- start
+      - run: npm install -g newman
+      - run: pm2 list
+      - run: pm2 logs
+      - run: newman run postman.json -e env.json
