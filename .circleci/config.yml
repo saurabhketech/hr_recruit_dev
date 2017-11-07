@@ -21,17 +21,6 @@ machine:
     version:
       latest
 
-dependencies:
-  pre:
-    - npm install coffeescript
-
-    
-database:
-  override:
-    # replace CircleCI's generated database.yml
-    - cp config/database.yml.ci config/database.yml
-    - bundle exec rake db:create db:schema:load
-
 jobs:
   build:
     docker:
@@ -39,6 +28,17 @@ jobs:
       - image: circleci/mongo:3.4.4
       - image: circleci/mysql:5.7.18
       - image: circleci/node:latest
+
+  dependencies:
+    pre:
+      - npm install coffeescript
+
+    
+  database:
+    override:
+    # replace CircleCI's generated database.yml
+      - cp config/database.yml.ci config/database.yml
+      - bundle exec rake db:create db:schema:load
 
     working_directory: ~/repo
 
