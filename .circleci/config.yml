@@ -1,26 +1,4 @@
-# version: 2
-# jobs:
-#    build:
-#      docker:
-#        - image: circleci/mongo:3.4.4
-
-#   deployment:
-#     production:
-#       branch: master
-#       commands:
-#       # The following few lines set up the heroku-toolbet CLI so we
-#       # can deploy the app. Read more in the CircleCI docs:
-#       # https://circleci.com/docs/1.0/continuous-deployment-with-heroku/
-#       - npm start
-
-
-
 version: 2
-machine:
-  node:
-    version:
-      latest
-
 jobs:
   build:
     docker:
@@ -34,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
-      - run: npm install
+      - run: sudo apt-get install nodejs
       - run: npm start
       # Download and cache dependencies
       - restore_cache:
