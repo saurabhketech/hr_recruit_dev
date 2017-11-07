@@ -39,7 +39,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
+      - run: node dist
       - run: sudo npm install -g npm@latest
       - run: npm install
       - save_cache:
@@ -53,6 +53,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: newman run postman.json -e env.json
+      - run: npm start
 
 
