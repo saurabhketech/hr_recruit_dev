@@ -8,7 +8,6 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_USER=hr_recruit_dev
-          - MYSQL_PASSWORD=hr_recruit_dev
 
     working_directory: /home/ubuntu/hr-recruit
 

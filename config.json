@@ -6,7 +6,7 @@
     {
         "host": "127.0.0.1",
         "name": "hr_recruit_dev",
-        "password": "hr_recruit_dev",
+        "password": null,
         "username": "hr_recruit_dev"
     },
     "mongodb":"hr_recruit_dev",
