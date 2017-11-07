@@ -5,6 +5,11 @@ jobs:
       - image: node:7.10.0
       - image: mongo:3.5.6
       - image: mysql:5.7
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD=true
+          - MYSQL_USER=hr_recruit_dev
+          - MYSQL_PASSWORD=hr_recruit_dev
+          
     working_directory: /home/ubuntu/hr-recruit
 
     steps:

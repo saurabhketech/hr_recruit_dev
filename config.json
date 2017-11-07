@@ -6,8 +6,8 @@
     {
         "host": "localhost",
         "name": "hr_recruit_dev",
-        "password": "",
-        "username": "root"
+        "password": "hr_recruit_dev",
+        "username": "hr_recruit_dev"
     },
     "mongodb":"hr_recruit_dev",
     "expiry_date": true,
