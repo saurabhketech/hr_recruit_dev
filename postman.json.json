@@ -1,0 +1,693 @@
+{
+	"variables": [],
+	"info": {
+		"name": "hr_recruitment copy",
+		"_postman_id": "cdb0fcdd-006e-a1b1-c832-2b060b28d008",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.User Registration",
+			"description": "",
+			"item": [
+				{
+					"name": "Login by Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.status == 1) {",
+									"    tests[\"status exist\"] = true;",
+									"} else {",
+									"    tests[\"status exist\"] = false;",
+									"}",
+									"if (jsonData.token) {",
+									"    postman.setEnvironmentVariable(\"token\", jsonData.token);",
+									"    tests[\"token exist\"] = true;",
+									"} else {",
+									"    tests[\"token exist\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/user/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "123@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "remember_me",
+									"value": "true",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData) {",
+									"    tests[\"data exist\"] = true;",
+									"    if (jsonData.id) {",
+									"        tests[\"id exist\"] = true;",
+									"        postman.setEnvironmentVariable(\"userId\", jsonData.id);",
+									"    } else {",
+									"        tests[\"id exist\"] = false;",
+									"    }",
+									"    if (jsonData.email) {",
+									"        tests[\"email exist\"] = true;",
+									"    } else {",
+									"        tests[\"email exist\"] = false;",
+									"    }",
+									"    if (jsonData.password) {",
+									"        tests[\"password exist\"] = true;",
+									"    } else {",
+									"        tests[\"password exist\"] = false;",
+									"    }",
+									"    if (jsonData.user_type) {",
+									"        postman.setEnvironmentVariable(\"type\", jsonData.user_type);",
+									"        tests[\"type\"] = true;",
+									"    } else {",
+									"        tests[\"type\"] = false;",
+									"    }",
+									"} else {",
+									"    tests[\"data exist\"] = false;",
+									"}",
+									"",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"email\", \"test\" + Math.floor((Math.random() * 10000) + 1) + \"@gmail.com\");",
+									"postman.setEnvironmentVariable(\"page\", 1);",
+									"postman.setEnvironmentVariable(\"limit\", 10);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url}}/user/add_user?accessToken={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"add_user"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "user_type",
+									"value": "Admin",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "confirm_password",
+									"value": "123",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.status == 1) {",
+									"    tests[\"status exist\"] = true;",
+									"} else {",
+									"    tests[\"status exist\"] = false;",
+									"}",
+									"if (jsonData.token) {",
+									"    postman.clearEnvironmentVariable(\"token\");",
+									"    postman.setEnvironmentVariable(\"token\", jsonData.token);",
+									"    tests[\"token exist\"] = true;",
+									"} else {",
+									"    tests[\"token exist\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/user/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "remember_me",
+									"value": "true",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"if(jsonData.status == true){",
+									"    tests[\"token verify\"] = true;",
+									"}else{",
+									"    tests[\"token verify\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url}}/verify?accessToken={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.message == \"password updated successfully\") {",
+									"    tests[\"Password Updated\"] = true;",
+									"} else {",
+									"    tests[\"Password Updated\"] = false;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url}}/account/update_password?accessToken={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"update_password"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "old_password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"if (jsonData.error) {",
+									"    tests[\"Error message contains\"] = false",
+									"} else {",
+									"    tests[\"Error message contains\"] = true",
+									"}",
+									"if (jsonData.data) {",
+									"    postman.setEnvironmentVariable(\"user_id\", jsonData.data[0].id);",
+									"    for (i = 0; i < jsonData.data.length; i++) {",
+									"        if (jsonData.data[i].id) {",
+									"            tests[\"id exist \" + i] = true;",
+									"        } else {",
+									"            tests[\"id exist \" + i] = false;",
+									"        }",
+									"",
+									"        if (jsonData.data[i].email) {",
+									"            tests[\"email exist \"+ i] = true;",
+									"        } else {",
+									"            tests['email exist '+ i] = false;",
+									"        }",
+									"    }",
+									"}",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url}}/user/list/1/11?accessToken={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"list",
+								"1",
+								"11"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User Dashboard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"if(jsonData.day_wise){",
+									"    tests['day_wise data exist'] = true",
+									"    if(jsonData.day_wise[0].label){",
+									"        tests['data label exists'] = true",
+									"    }else{",
+									"      tests[' data label exists'] = false ",
+									"    }",
+									"      if(jsonData.day_wise[1].label){",
+									"        tests['data label exists'] = true",
+									"    }else{",
+									"      tests[' data label exists'] = false ",
+									"    }",
+									"    ",
+									"    if(jsonData.day_wise[0].dates){",
+									"        tests['dates data exists'] = true",
+									"    }else{",
+									"      tests['dates data exists'] = false ",
+									"    }",
+									"      if(jsonData.day_wise[1].dates){",
+									"        tests['dates data exists'] = true",
+									"    }else{",
+									"      tests['dates data exists'] = false ",
+									"    }",
+									"}else{",
+									"    tests['day_wise data exist'] = false",
+									"}",
+									"",
+									"",
+									"if(jsonData.month_wise.length){",
+									"    tests['month_wise data exists'] = true",
+									"    if(jsonData.month_wise[0].label){",
+									"    tests['month_wise label exists'] = true",
+									"    }else{",
+									"    tests['month_wise label exists'] = false",
+									"    }",
+									"    ",
+									"    if(jsonData.month_wise[1].months){",
+									"    tests['month_wise months exists'] = true",
+									"    }else{",
+									"    tests['month_wise months exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['month_wise dtaa exists'] = false",
+									"}",
+									"",
+									"if(jsonData.rounds.length){",
+									"    tests['rounds data exists'] = true",
+									"    if(jsonData.rounds[0].label){",
+									"    tests['rounds label exists'] = true",
+									"    }else{",
+									"    tests['rounds label exists'] = false",
+									"    }",
+									"    ",
+									"    if(jsonData.rounds[1].rounds){",
+									"    tests['rounds rounds exists'] = true",
+									"    }else{",
+									"    tests['rounds rounds exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['rounds data exists'] = false",
+									"}",
+									"",
+									"if(jsonData.email_stat.length){",
+									"    tests['email_stat data exists'] = true",
+									"    if(jsonData.email_stat[0].label){",
+									"    tests['email_stat label exists'] = true",
+									"    }else{",
+									"    tests['email_stat label exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['email_stat data exists'] = false",
+									"}",
+									"",
+									"if(jsonData.read_email_data.length){",
+									"    tests['read_email_data data exists'] = true",
+									"    if(jsonData.read_email_data[0].label){",
+									"    tests['read_email_data label exists'] = true",
+									"    }else{",
+									"    tests['read_email_data label exists'] = false",
+									"    }",
+									"    ",
+									"    if(jsonData.read_email_data[1].dates){",
+									"    tests['read_email_data dates exists'] = true",
+									"    }else{",
+									"    tests['read_email_data dates exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['read_email_data data exists'] = false",
+									"}",
+									"",
+									"if(jsonData.read_mail_by_user.length){",
+									"    tests['read_mail_by_user data exists'] = true",
+									"    if(jsonData.read_mail_by_user[0].label){",
+									"    tests['read_mail_by_user label exists'] = true",
+									"    }else{",
+									"    tests['read_mail_by_user label exists'] = false",
+									"    }",
+									"    ",
+									"    if(jsonData.read_mail_by_user[1].dates){",
+									"    tests['read_mail_by_user dates exists'] = true",
+									"    }else{",
+									"    tests['read_mail_by_user dates exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['read_mail_by_user data exists'] = false",
+									"}",
+									"",
+									"if(jsonData.email_stat_by_job_profile.length){",
+									"    tests['email_stat_by_job_profile data exists'] = true",
+									"    if(jsonData.email_stat_by_job_profile[0].label){",
+									"    tests['email_stat_by_job_profile label exists'] = true",
+									"    }else{",
+									"    tests['email_stat_by_job_profile label exists'] = false",
+									"    }",
+									"    ",
+									"    if(jsonData.email_stat_by_job_profile[1].dates){",
+									"    tests['email_stat_by_job_profile dates exists'] = true",
+									"    }else{",
+									"    tests['email_stat_by_job_profile dates exists'] = false",
+									"    }",
+									"  }else{",
+									"    tests['email_stat_by_job_profile data exists'] = false",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/dashboard",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "data_type",
+									"value": "date",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User Logs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"if (jsonData.data.length) {",
+									"    tests['Logs data exists'] = true",
+									"} else {",
+									"    tests['Logs data exists'] = false",
+									"}",
+									"for (var i = 0; i < jsonData.data[0].action.length; i++) {",
+									"    if (jsonData.data[0].action[i]) {",
+									"        tests['action data exists'+ i ] = true",
+									"    } else {",
+									"        tests['action data exists' + i ] = false",
+									"    }",
+									"",
+									"    if (jsonData.data[0].time[i]) {",
+									"        tests['time data exists' + i ] = true",
+									"    } else {",
+									"        tests['time data exists' + i ] = false",
+									"    }",
+									"    ",
+									"    if (jsonData.data[0].json[i]  || jsonData.data[0].json[i] === null) {",
+									"        tests['json data exists' + i ] = true",
+									"    } else {",
+									"        tests['json data exists' + i ] = false",
+									"    }",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "{{url}}/user/log/{{email}}?accessToken={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"log",
+								"{{email}}"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email_id",
+									"value": "saurabhcse.iimtgn@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "registration_id",
+									"value": "186080",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "mobile_no",
+									"value": "8585917430",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
