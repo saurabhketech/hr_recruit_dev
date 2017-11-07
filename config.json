@@ -4,7 +4,7 @@
     "corsHeaders": ["Link"],
     "db":
     {
-        "host": "localhost",
+        "host": "127.0.0.1",
         "name": "hr_recruit_dev",
         "password": "hr_recruit_dev",
         "username": "hr_recruit_dev"
