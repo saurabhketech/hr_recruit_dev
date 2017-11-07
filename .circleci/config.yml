@@ -40,7 +40,12 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: newman run postman.json -e env.json
+      - run: sudo npm install -g npm@latest
+      - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
 
       - save_cache:
           paths:
