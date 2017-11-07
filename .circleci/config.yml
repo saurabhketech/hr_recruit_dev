@@ -27,21 +27,10 @@ jobs:
       # specify the version you desire here
       - image: circleci/mongo:3.4.4
       - image: circleci/mysql:5.7.18
-      - image: circleci/node:latest
+      - image: circleci/node:7.7.2
 
     working_directory: ~/repo
 
-    dependencies:
-      pre:
-        - npm install coffeescript
-
-    
-    database:
-      override:
-      # replace CircleCI's generated database.yml
-      - cp config/database.yml.ci config/database.yml
-      - bundle exec rake db:create db:schema:load
-      
     steps:
       - checkout
       
