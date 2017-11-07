@@ -9,7 +9,7 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_USER=hr_recruit_dev
           - MYSQL_PASSWORD=hr_recruit_dev
-          
+
     working_directory: /home/ubuntu/hr-recruit
 
     steps:
@@ -20,4 +20,5 @@ jobs:
       - run: pm2 start npm --name hr-recruit -- start
       - run: npm install -g newman
       - run: pm2 list
-      - run: newman run postman.json -e env.json
+      - run: pm2 logs
+      # - run: newman run postman.json -e env.json
