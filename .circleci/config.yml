@@ -25,13 +25,15 @@ jobs:
       - image: circleci/node:latest
 
     working_directory: ~/repo
-    dependencies:
-      commands:
-        - npm install
+
     steps:
       - checkout
       
       # Download and cache dependencies
+      dependencies:
+      commands:
+        - npm install
+        
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
