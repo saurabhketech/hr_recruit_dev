@@ -29,19 +29,19 @@ jobs:
       - image: circleci/mysql:5.7.18
       - image: circleci/node:latest
 
-  dependencies:
-    pre:
-      - npm install coffeescript
-
-    
-  database:
-    override:
-    # replace CircleCI's generated database.yml
-      - cp config/database.yml.ci config/database.yml
-      - bundle exec rake db:create db:schema:load
-
     working_directory: ~/repo
 
+    dependencies:
+      pre:
+        - npm install coffeescript
+
+    
+    database:
+      override:
+      # replace CircleCI's generated database.yml
+      - cp config/database.yml.ci config/database.yml
+      - bundle exec rake db:create db:schema:load
+      
     steps:
       - checkout
       
