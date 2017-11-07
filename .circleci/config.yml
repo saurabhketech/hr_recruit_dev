@@ -1,11 +1,13 @@
-machine:
-  node:
-    version: 4.5.0
+version: 2
+jobs:
+   build:
+     docker:
+       - image: circleci/mongo:3.4.4
 
-deployment:
-  production:
-    branch: master
-    commands:
+  deployment:
+    production:
+      branch: master
+      commands:
       # The following few lines set up the heroku-toolbet CLI so we
       # can deploy the app. Read more in the CircleCI docs:
       # https://circleci.com/docs/1.0/continuous-deployment-with-heroku/
