@@ -4,10 +4,11 @@ jobs:
     docker: 
       - image: node:7.10.0
     working_directory: /home/ubuntu/hr-recruit
-    
+
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
       - run: npm install
+      - run: npm start
       - run: npm install -g newman
       - run: newman run postman.json -e env.json
