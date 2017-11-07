@@ -9,7 +9,10 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_USER=hr_recruit_dev
           - MYSQL_PASSWORD=hr_recruit_dev
-
+      - image: postgres:9.5
+        environment:
+          - POSTGRES_USER=hr_recruit_dev
+          - POSTGRES_DB=hr_recruit_dev
     working_directory: /home/ubuntu/hr-recruit
 
     steps:
