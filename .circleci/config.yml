@@ -28,13 +28,6 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
 
     working_directory: ~/repo
-    
-    deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: hr-recruit
-
 
     steps:
       - checkout
