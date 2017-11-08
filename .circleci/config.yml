@@ -14,10 +14,10 @@ jobs:
     
     steps:
       - checkout
+      - run: echo 127.0.0.1 circlehost | tee -a /etc/hosts
       - run: mkdir -p /home/ubuntu/hr-recruit
       - run: npm install
       - run: npm install pm2 -g
       - run: pm2 start npm --name hr-recruit -- start
-      - run: echo 127.0.0.1 circlehost | tee -a /etc/hosts
       - run: npm install -g newman
       - run: newman run postman.json -e env.json
