@@ -6,11 +6,12 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("../config.json");
 var migration = require('../migrations/index.js')
 var db = {};
-var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, { port: 3306, host: config.db.host });
+var sequelize = new Sequelize('mysql', config.db.username, config.db.password, { port: 3306, host: config.db.host });
 
 sequelize.query(`CREATE DATABASE IF NOT EXISTS ${config.db.name}`).then(() => console.log('Database created')).catch((err) => {
     console.log(err)
 });
+var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, { port: 3306, host: config.db.host });
 
 fs
     .readdirSync(__dirname)

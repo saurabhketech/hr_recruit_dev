@@ -19,7 +19,8 @@ if (!db) {
     console.log("Mongodb information is not fount update config details");
     process.exit(0);
 }
-var conn = 'mongodb://recruit-dev:java123@ds147265.mlab.com:47265/hr_recruit_dev';
+var conn = _mongoose2.default.createConnection("mongodb://localhost/" + db);
+// let conn = 'mongodb://recruit-dev:java123@ds147265.mlab.com:47265/hr_recruit_dev';
 conn = _mongoose2.default.connect(conn);
 
 // the middleware function
