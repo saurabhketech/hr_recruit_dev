@@ -1,5 +1,9 @@
 version: 2
 jobs:
+  dependencies:
+  pre:
+    - sudo service mongodb stop && curl -L -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && tar xvzf mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && sudo mv mongodb-linux-x86_64-ubuntu1204-3.0.2/bin/* /usr/bin/ && sudo service mongodb start
+​
   build:
     docker: 
       - image: node:7.10.0
@@ -12,7 +16,7 @@ jobs:
           - MYSQL_HOST=127.0.0.1
 
     working_directory: /home/ubuntu/hr-recruit
-
+    
     steps:
       - checkout
       - run: mkdir -p /home/ubuntu/hr-recruit
