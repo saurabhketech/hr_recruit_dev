@@ -6,11 +6,9 @@ jobs:
       - image: mongo:3.5.6
       - image: mysql:5.7
         environment:
-          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_ROOT_PASSWORD=java@123
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
-          - MYSQL_USER=root
           - MYSQL_DATABASE=hr_recruit_dev
-          - MYSQL_PASSWORD=java@123
           - MYSQL_HOST=127.0.0.1
 
     working_directory: /home/ubuntu/hr-recruit
