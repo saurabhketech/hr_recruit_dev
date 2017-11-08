@@ -12,66 +12,6 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Login by Admin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"var jsonData = JSON.parse(responseBody);",
-									"if (jsonData.status == 1) {",
-									"    tests[\"status exist\"] = true;",
-									"} else {",
-									"    tests[\"status exist\"] = false;",
-									"}",
-									"if (jsonData.token) {",
-									"    postman.setEnvironmentVariable(\"token\", jsonData.token);",
-									"    tests[\"token exist\"] = true;",
-									"} else {",
-									"    tests[\"token exist\"] = false;",
-									"}"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "{{url}}/user/login",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "123@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "remember_me",
-									"value": "true",
-									"description": "",
-									"type": "text"
-								}
-							]
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "Register",
 					"event": [
 						{
@@ -127,25 +67,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "{{url}}/user/add_user?accessToken={{token}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user",
-								"add_user"
-							],
-							"query": [
-								{
-									"key": "accessToken",
-									"value": "{{token}}",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "{{url}}/user/add_user",
 						"method": "POST",
 						"header": [
 							{
