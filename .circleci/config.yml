@@ -1,9 +1,5 @@
 version: 2
 jobs:
-  dependencies:
-  pre:
-    - sudo service mongodb stop && curl -L -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && tar xvzf mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && sudo mv mongodb-linux-x86_64-ubuntu1204-3.0.2/bin/* /usr/bin/ && sudo service mongodb start
-​
   build:
     docker: 
       - image: node:7.10.0
@@ -14,6 +10,9 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_DATABASE=hr_recruit_dev
           - MYSQL_HOST=127.0.0.1
+    dependencies:
+    pre:
+      - sudo service mongodb stop && curl -L -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && tar xvzf mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && sudo mv mongodb-linux-x86_64-ubuntu1204-3.0.2/bin/* /usr/bin/ && sudo service mongodb start
 
     working_directory: /home/ubuntu/hr-recruit
     
