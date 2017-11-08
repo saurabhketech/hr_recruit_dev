@@ -9,7 +9,7 @@ jobs:
           - MYSQL_ROOT_PASSWORD=java@123
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
           - MYSQL_HOST=127.0.0.1
-      - image: php:5.6
+      - image: php:5.6.30-apache
 
     working_directory: /home/ubuntu/hr-recruit
     
