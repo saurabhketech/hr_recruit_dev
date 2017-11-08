@@ -14,7 +14,7 @@ jobs:
     
     steps:
       - checkout
-      - run: echo 127.0.0.1 circlehost | tee -a /etc/hosts
+      - run: echo 127.0.0.1 host | tee -a /etc/hosts
       - run: mkdir -p /home/ubuntu/hr-recruit
       - run: npm install
       - run: npm install pm2 -g
