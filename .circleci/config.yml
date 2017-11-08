@@ -11,6 +11,7 @@ jobs:
           - MYSQL_USER=root
           - MYSQL_DATABASE=hr_recruit_dev
           - MYSQL_PASSWORD=java@123
+          - MYSQL_HOST=127.0.0.1
 
     working_directory: /home/ubuntu/hr-recruit
 
