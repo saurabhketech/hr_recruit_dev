@@ -633,14 +633,14 @@
 					],
 					"request": {
 						"url": {
-							"raw": "{{url}}/user/log/dev@gmail.com?accessToken={{token}}",
+							"raw": "{{url}}/user/log/{{email}}?accessToken={{token}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"user",
 								"log",
-								"dev@gmail.com"
+								"{{email}}"
 							],
 							"query": [
 								{
