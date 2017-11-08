@@ -19,7 +19,7 @@ exports.default = function (app) {
     app.route("/verify").get(_auth2.default.verifyToken);
 
     /* Route for User Registration  */
-    app.route("/user/add_user").post(_auth2.default.requiresAdmin, _user2.default.create);
+    app.route("/user/add_user").post(_user2.default.create);
 
     /* Route for User Login  */
     app.route("/user/login").post(_user2.default.login);
