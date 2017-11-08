@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./models/index.js && node dist",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
-    "precommit": "newman run postman.json -e env.json"
+    "precommit": "newman run postman.json -e env.json",
+    "test": "newman run postman.json -e env.json"
   },
   "repository": "developit/express-es6-rest-api",
   "author": "Jason Miller <jason@developit.ca>",
