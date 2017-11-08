@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "hr_recruitment copy",
-		"_postman_id": "cdb0fcdd-006e-a1b1-c832-2b060b28d008",
+		"name": "hr_recruitment copy copy",
+		"_postman_id": "7242d6af-7c66-3ee9-5ef8-f492f57c9fef",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -20,6 +20,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"test[responseBody] = true;",
 									"var jsonData = JSON.parse(responseBody);",
 									"if (jsonData) {",
 									"    tests[\"data exist\"] = true;",
